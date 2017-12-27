@@ -18,9 +18,9 @@ namespace server_socket
 		tcp(std::string ip_address, int port_no);
 		void tcp_listen(int backlog);
 		SOCKET accept_client(sockaddr_in& from);
-		char* receive(SOCKET client_socket);
+		char* receive(SOCKET client_socket, int buffer_size);
+		void send_back(std::string message);
 		void close(SOCKET socket);
-
 		void close();		
 	};
 }

@@ -27,6 +27,8 @@ protected:
 	};
 public:
 	Socket();
+	// type = 0 for TCP
+	// type = 1 for UDP
 	SOCKET get_socket(int type);
 };
 

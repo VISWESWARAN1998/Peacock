@@ -27,20 +27,19 @@ SOCKET server_socket::tcp::accept_client(sockaddr_in& from)
 	return s;
 }
 
-char* server_socket::tcp::receive(SOCKET client_socket)
+char* server_socket::tcp::receive(SOCKET client_socket, int buffer_size)
 {
 	int result = 0;
 	int current_buffer_size = 0;
-	char* buffer = (char*)malloc(current_buffer_size * sizeof(int));
-	do
-	{
-		// reallocate the array now
-		current_buffer_size = current_buffer_size + 1024;
-		buffer = (char*)realloc(buffer, current_buffer_size);
-		result = recv(client_socket, buffer, 1024, 0);
-		std::cout << result;
-	} while (result > 0);
+	char* buffer = (char*)malloc(buffer_size * sizeof(int));
+	result = recv(client_socket, buffer, buffer_size, 0);
 	return buffer;
+}
+
+void server_socket::tcp::send_back(std::string message)
+{
+	// Send the message back
+	send(socket, message.c_str(), message.size(), 0);
 }
 
 void server_socket::tcp::close()
