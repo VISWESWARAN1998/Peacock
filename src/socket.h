@@ -27,8 +27,10 @@ protected:
 	};
 public:
 	Socket();
+	// Will return the socket of specified type
 	// type = 0 for TCP
 	// type = 1 for UDP
+	// Throws: socket_error
 	SOCKET get_socket(int type);
 };
 

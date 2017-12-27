@@ -9,18 +9,72 @@ for various protocols like TCP, UDP etc.,
 */
 namespace server_socket
 {
+	/**
+	RFC:
+	----
+	The Transmission Control Protocol (TCP) is intended for use as a highly
+	reliable host-to-host protocol between hosts in packet-switched computer
+	communication networks, and in interconnected systems of such networks.
+	*/
 	class tcp :public Socket
 	{
 	private:
 		SOCKET socket;
 		sockaddr_in server;
 	public:
+		/**
+		Description:
+		------------
+		A constructor to bind the specific ip address on a particular port number
+		Throws:
+		--------
+		bind_error if the port is already in use
+		*/
 		tcp(std::string ip_address, int port_no);
+		/**
+		Description:
+		------------
+		Will listen for a specified backlog
+
+		Throws:
+		-------
+		listen_error
+		*/
 		void tcp_listen(int backlog);
-		SOCKET accept_client(sockaddr_in& from);
+		/**
+		Description:
+		-------------
+		Will accept connections from the client
+		*/
+		void accept_client(SOCKET& client, sockaddr_in& from);
+		/**
+		Description:
+		-------------
+		Will receive the message from the client with 
+		the specified buffer size
+		*/
 		char* receive(SOCKET client_socket, int buffer_size);
-		void send_back(std::string message);
-		void close(SOCKET socket);
+		/**
+		Description:
+		------------
+		Will send the message to the client
+
+		Throws:
+		--------
+		socket_error
+		*/
+		void send_message(SOCKET s, std::string message);
+		/**
+		Description:
+		-------------
+		Will close the particular socket
+		*/
+		void close(SOCKET& socket);
+		/**
+		Description:
+		-------------
+		Will close the TCP connection itself.
+		*/
 		void close();		
 	};
 }

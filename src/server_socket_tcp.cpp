@@ -20,26 +20,24 @@ void server_socket::tcp::tcp_listen(int backlog)
 	if (listen(socket, 10) != 0) throw listen_error();
 }
 
-SOCKET server_socket::tcp::accept_client(sockaddr_in& from)
+void server_socket::tcp::accept_client(SOCKET& client,  sockaddr_in& from)
 {
 	int size = sizeof(from);
-	SOCKET s = accept(socket, (sockaddr*)&from, &size);
-	return s;
+	client = accept(socket, (sockaddr*)&from, &size);
 }
 
 char* server_socket::tcp::receive(SOCKET client_socket, int buffer_size)
 {
-	int result = 0;
-	int current_buffer_size = 0;
-	char* buffer = (char*)malloc(buffer_size * sizeof(int));
-	result = recv(client_socket, buffer, buffer_size, 0);
+	char* buffer = new char[buffer_size];
+	recv(client_socket, buffer, buffer_size, 0);
 	return buffer;
 }
 
-void server_socket::tcp::send_back(std::string message)
+void server_socket::tcp::send_message(SOCKET s, std::string message)
 {
 	// Send the message back
-	send(socket, message.c_str(), message.size(), 0);
+	int result = send(s, message.c_str(), message.size(), 0);
+	if (result == SOCKET_ERROR) throw socket_error();
 }
 
 void server_socket::tcp::close()
@@ -47,7 +45,7 @@ void server_socket::tcp::close()
 	closesocket(socket);
 }
 
-void server_socket::tcp::close(SOCKET socket)
+void server_socket::tcp::close(SOCKET& socket)
 {
 	closesocket(socket);
 }
