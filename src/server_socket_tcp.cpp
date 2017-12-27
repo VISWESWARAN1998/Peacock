@@ -17,7 +17,7 @@ server_socket::tcp::tcp(std::string ip_address, int port_no)
 
 void server_socket::tcp::tcp_listen(int backlog)
 {
-	if (listen(socket, 10) != 0) throw listen_error();
+	if (listen(socket, backlog) != 0) throw listen_error();
 }
 
 void server_socket::tcp::accept_client(SOCKET& client,  sockaddr_in& from)
