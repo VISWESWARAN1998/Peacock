@@ -20,3 +20,8 @@ void client_socket::tcp::get_client_socket(SOCKET & socket)
 {
 	socket = this->socket;
 }
+
+void client_socket::tcp::close()
+{
+	closesocket(socket);
+}

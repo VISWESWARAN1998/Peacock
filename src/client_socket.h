@@ -29,5 +29,11 @@ namespace client_socket
 		This method will return the client socket
 		*/
 		void get_client_socket(SOCKET& socket);
+		/**
+		Description:
+		-----------
+		closes the tcp connection
+		*/
+		void close();
 	};
 }
