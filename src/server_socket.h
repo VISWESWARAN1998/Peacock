@@ -47,23 +47,7 @@ namespace server_socket
 		Will accept connections from the client
 		*/
 		void accept_client(SOCKET& client, sockaddr_in& from);
-		/**
-		Description:
-		-------------
-		Will receive the message from the client with 
-		the specified buffer size
-		*/
-		char* receive(SOCKET client_socket, int buffer_size);
-		/**
-		Description:
-		------------
-		Will send the message to the client
-
-		Throws:
-		--------
-		socket_error
-		*/
-		void send_message(SOCKET s, std::string message);
+				
 		/**
 		Description:
 		-------------

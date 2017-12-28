@@ -26,20 +26,6 @@ void server_socket::tcp::accept_client(SOCKET& client,  sockaddr_in& from)
 	client = accept(socket, (sockaddr*)&from, &size);
 }
 
-char* server_socket::tcp::receive(SOCKET client_socket, int buffer_size)
-{
-	char* buffer = new char[buffer_size];
-	recv(client_socket, buffer, buffer_size, 0);
-	return buffer;
-}
-
-void server_socket::tcp::send_message(SOCKET s, std::string message)
-{
-	// Send the message back
-	int result = send(s, message.c_str(), message.size(), 0);
-	if (result == SOCKET_ERROR) throw socket_error();
-}
-
 void server_socket::tcp::close()
 {
 	closesocket(socket);

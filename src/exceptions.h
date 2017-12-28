@@ -64,12 +64,28 @@ public:
 	}
 };
 
-
+//===================================================
+// LISTEN ERROR: unable to listen for a backlog
+//===================================================
 class listen_error :public std::exception
 {
 public:
 	virtual const char* what() const throw()
 	{
 		return "Unable to listen";
+	}
+};
+
+//====================================================
+// CONNECTION ERROR: unable to connect on the specified
+// ip and port
+//====================================================
+class connection_error : public std::exception
+{
+public:
+	virtual const char* what() const throw()
+	{
+		return "Connection error, unable to connect"
+			"on the specified ip address and port no";
 	}
 };
