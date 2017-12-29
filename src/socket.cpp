@@ -23,16 +23,7 @@ SOCKET Socket::get_socket(int type)
 	return SOCKET();
 }
 
-void Socket::send_message(SOCKET s, std::string message)
+void Socket::close(SOCKET & socket)
 {
-	// Send the message back
-	int result = send(s, message.c_str(), message.size(), 0);
-	if (result == SOCKET_ERROR) throw socket_error();
-}
-
-char * Socket::receive(SOCKET client_socket, int buffer_size)
-{
-	char* buffer = new char[buffer_size];
-	recv(client_socket, buffer, buffer_size, 0);
-	return buffer;
+	closesocket(socket);
 }

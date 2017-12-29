@@ -29,6 +29,26 @@ namespace client_socket
 		This method will return the client socket
 		*/
 		void get_client_socket(SOCKET& socket);
+
+		/**
+		Description:
+		-------------
+		Will receive the message from the client with
+		the specified buffer size
+		*/
+		char* receive(SOCKET client_socket, int buffer_size);
+
+		/**
+		Description:
+		-------------
+		This method is used to send message on the specified socket
+
+		Throws:
+		--------
+		socket_error
+		*/
+		void send_message(SOCKET s, std::string message);
+
 		/**
 		Description:
 		-----------

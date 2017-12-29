@@ -21,6 +21,20 @@ void client_socket::tcp::get_client_socket(SOCKET & socket)
 	socket = this->socket;
 }
 
+char * client_socket::tcp::receive(SOCKET client_socket, int buffer_size)
+{
+	char* buffer = new char[buffer_size];
+	recv(client_socket, buffer, buffer_size, 0);
+	return buffer;
+}
+
+void client_socket::tcp::send_message(SOCKET s, std::string message)
+{
+	// Send the message back
+	int result = send(s, message.c_str(), message.size(), 0);
+	if (result == SOCKET_ERROR) throw socket_error();
+}
+
 void client_socket::tcp::close()
 {
 	closesocket(socket);
