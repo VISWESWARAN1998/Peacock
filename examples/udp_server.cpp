@@ -10,8 +10,7 @@ int main()
 		sockaddr_in from;
 		std::cout << server.receive(10, from);
 		server.send_message(from, "Hello there");
-		server.close(); // I know this wont get called :) but in real world applications 
-						// you have to close the tcp connection like this
+		server.close();
 	}
 	catch (std::exception &e)
 	{

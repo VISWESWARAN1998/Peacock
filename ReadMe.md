@@ -7,6 +7,13 @@
 ![Platform](https://img.shields.io/badge/platform-windows-blue.svg)
 </br>
 # Documentation:
+## Index:
+1. [Creating a simple TCP Server](https://github.com/VISWESWARAN1998/Peacock#lesson-1-creating-a-simple-tcp-server)
+2. [Creating a simple TCP Client]()
+3. [Creating a TCP port scanner]()
+4. [Creating a UDP server]()
+
+
 ### Lesson 1: Creating a simple TCP server:
 ```C++
 #include<iostream>
@@ -38,5 +45,76 @@ int main()
 	}
 	int a;
 	std::cin >> a;
+}
+```
+
+### Lesson 2: Creating a simple TCP client
+```C++
+#include<iostream>
+#include"client_socket.h"
+
+int main()
+{
+	try {
+		client_socket::tcp client("127.0.0.1", 90);
+		SOCKET s;
+		client.get_client_socket(s);
+		client.send_message(s, "Hello World");
+		std::cout<< client.receive(s, 100);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << "exception: ";
+		std::cout << e.what();
+	}
+	int a;
+	std::cin >> a;
+}
+```
+
+### Lesson 3: Creating a simple TCP port scanner:
+
+```C++
+#include<iostream>
+#include"client_socket.h"
+
+int main()
+{
+	for (int i = 0; i < 65536; i++)
+	{
+		try 
+		{
+			client_socket::tcp client("127.0.0.1", i);
+			std::cout << i << " is opened.\n";
+			client.close();
+		}
+		catch (connection_error &e)
+		{
+			std::cout << i << " is not opened.\n";
+			// log e.what() if you want
+		}
+	}
+}
+```
+
+### Lesson 4: Creating a UDP server
+```C++
+#include<iostream>
+#include"server_socket.h"
+
+int main()
+{
+	try {
+		server_socket::udp server("127.0.0.1", 90);
+		sockaddr_in from;
+		std::cout << server.receive(10, from);
+		server.send_message(from, "Hello there");
+		server.close();
+	}
+	catch (std::exception &e)
+	{
+		std::cout << "exception: ";
+		std::cout << e.what();
+	}
 }
 ```
