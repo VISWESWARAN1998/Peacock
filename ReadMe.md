@@ -9,9 +9,9 @@
 # Documentation:
 ## Index:
 1. [Creating a simple TCP Server](https://github.com/VISWESWARAN1998/Peacock#lesson-1-creating-a-simple-tcp-server)
-2. [Creating a simple TCP Client]()
-3. [Creating a TCP port scanner]()
-4. [Creating a UDP server]()
+2. [Creating a simple TCP Client](https://github.com/VISWESWARAN1998/Peacock#lesson-2-creating-a-simple-tcp-client)
+3. [Creating a TCP port scanner](https://github.com/VISWESWARAN1998/Peacock#lesson-3-creating-a-simple-tcp-port-scanner)
+4. [Creating a UDP server](https://github.com/VISWESWARAN1998/Peacock#lesson-4-creating-a-udp-server)
 
 
 ### Lesson 1: Creating a simple TCP server:
