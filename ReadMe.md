@@ -13,6 +13,7 @@
 3. [Creating a TCP port scanner](https://github.com/VISWESWARAN1998/Peacock#lesson-3-creating-a-simple-tcp-port-scanner)
 4. [Creating a simple UDP server](https://github.com/VISWESWARAN1998/Peacock#lesson-4-creating-a-udp-server)
 5. [Creating a simple UDP client](https://github.com/VISWESWARAN1998/Peacock/blob/master/ReadMe.md#lesson-5-creating-a-simple-udp-client)
+6. [Creating a Local host UDP port Scanner]()
 
 
 ### Lesson 1: Creating a simple TCP server:
@@ -139,5 +140,41 @@ int main()
 		std::cout << "exception: ";
 		std::cout << e.what();
 	}
+}
+```
+
+### Lesson 6: Creating a localhost UDP port scanner
+```C++
+// SWAMI KARUPPASWAMI THUNNAI
+
+#include<iostream>
+#include<typeinfo>
+#include"server_socket.h"
+#include"exceptions.h"
+
+bool is_port_opened(int port_no)
+{
+	try {
+		server_socket::udp server("127.0.0.1", port_no);
+		server.close();
+		return false;
+	}
+	catch (bind_error &e) {
+		return true;
+	}
+}
+
+int main()
+{
+	std::cout << "Local Host Port Scanner\n";
+	for (int i = 0; i < 65536; i++)
+	{
+		if (is_port_opened(i))
+		{
+			std::cout << "Port: " << i << " is opened\n";
+		}
+	}
+	int a;
+	std::cin >> a;
 }
 ```
