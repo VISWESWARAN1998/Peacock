@@ -11,7 +11,7 @@
 1. [Creating a simple TCP Server](https://github.com/VISWESWARAN1998/Peacock#lesson-1-creating-a-simple-tcp-server)
 2. [Creating a simple TCP Client](https://github.com/VISWESWARAN1998/Peacock#lesson-2-creating-a-simple-tcp-client)
 3. [Creating a TCP port scanner](https://github.com/VISWESWARAN1998/Peacock#lesson-3-creating-a-simple-tcp-port-scanner)
-4. [Creating a UDP server](https://github.com/VISWESWARAN1998/Peacock#lesson-4-creating-a-udp-server)
+4. [Creating a simple UDP server](https://github.com/VISWESWARAN1998/Peacock#lesson-4-creating-a-udp-server)
 
 
 ### Lesson 1: Creating a simple TCP server:
@@ -97,7 +97,7 @@ int main()
 }
 ```
 
-### Lesson 4: Creating a UDP server
+### Lesson 4: Creating a simple UDP server
 ```C++
 #include<iostream>
 #include"server_socket.h"
@@ -110,6 +110,28 @@ int main()
 		std::cout << server.receive(10, from);
 		server.send_message(from, "Hello there");
 		server.close();
+	}
+	catch (std::exception &e)
+	{
+		std::cout << "exception: ";
+		std::cout << e.what();
+	}
+}
+```
+
+### Lesson 5: Creating a simple UDP client
+```C++
+#include<iostream>
+#include"client_socket.h"
+
+int main()
+{
+	try {
+		client_socket::udp client("127.0.0.1", 90);
+		sockaddr_in from;
+		client.get_client_socketaddr(from);
+		client.send_message(from, "Hello There");
+		std::cout<<client.receive(100, from);
 	}
 	catch (std::exception &e)
 	{
