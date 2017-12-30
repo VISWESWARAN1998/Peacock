@@ -10,7 +10,7 @@ int main()
 		sockaddr_in from;
 		client.get_client_socketaddr(from);
 		client.send_message(from, "Hello There");
-		std::cout<<client.receive(11, from);
+		std::cout<<client.receive(100, from);
 	}
 	catch (std::exception &e)
 	{
