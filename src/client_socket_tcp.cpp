@@ -35,6 +35,7 @@ void client_socket::tcp::send_message(SOCKET s, std::string message)
 	if (result == SOCKET_ERROR) throw socket_error();
 }
 
+
 void client_socket::tcp::close()
 {
 	closesocket(socket);

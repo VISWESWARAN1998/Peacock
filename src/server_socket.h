@@ -10,8 +10,8 @@ for various protocols like TCP, UDP etc.,
 namespace server_socket
 {
 	/**
-	Transmission Control Protocol:
-	------------------------------
+	Transmission Control Protocol - Server Class:
+	---------------------------------------------
 	The Transmission Control Protocol (TCP) is intended for use as a highly
 	reliable host-to-host protocol between hosts in packet-switched computer
 	communication networks, and in interconnected systems of such networks.
