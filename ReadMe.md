@@ -12,6 +12,7 @@
 2. [Creating a simple TCP Client](https://github.com/VISWESWARAN1998/Peacock#lesson-2-creating-a-simple-tcp-client)
 3. [Creating a TCP port scanner](https://github.com/VISWESWARAN1998/Peacock#lesson-3-creating-a-simple-tcp-port-scanner)
 4. [Creating a simple UDP server](https://github.com/VISWESWARAN1998/Peacock#lesson-4-creating-a-udp-server)
+5. [Creating a simple UDP client](https://github.com/VISWESWARAN1998/Peacock/blob/master/ReadMe.md#lesson-5-creating-a-simple-udp-client)
 
 
 ### Lesson 1: Creating a simple TCP server:
