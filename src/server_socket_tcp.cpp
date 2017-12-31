@@ -29,6 +29,9 @@ void server_socket::tcp::accept_client(SOCKET& client,  sockaddr_in& from)
 char * server_socket::tcp::receive(SOCKET client_socket, int buffer_size)
 {
 	char* buffer = new char[buffer_size];
+	// Intialize null value to all the elements present in the
+	// array in order to avoid garbage data
+	for (int i = 0; i < buffer_size; i++) buffer[i] = '\0';
 	recv(client_socket, buffer, buffer_size, 0);
 	return buffer;
 }

@@ -20,6 +20,9 @@ char * server_socket::udp::receive(int buffer_size, sockaddr_in& from)
 {
 	char* buffer = new char[buffer_size];
 	int size = sizeof(from);
+	// Intialize null value to all the elements present in the
+	// array in order to avoid garbage data
+	for (int i = 0; i < buffer_size; i++) buffer[i] = '\0';
 	if (recvfrom(socket, buffer, buffer_size, 0, 
 		(struct sockaddr*)&from, &size) == SOCKET_ERROR) throw socket_error();
 	return buffer;
