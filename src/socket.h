@@ -23,9 +23,9 @@ private:
 	WSADATA winsock;
 	SOCKET sock;
 protected:
-	const enum {
-		TCP = 0,
-		UDP = 1
+	const enum protocol{
+		TCP,
+		UDP
 	};
 public:
 	Socket();
@@ -33,7 +33,7 @@ public:
 	// type = 0 for TCP
 	// type = 1 for UDP
 	// Throws: socket_error
-	SOCKET get_socket(int type);
+	SOCKET get_socket(protocol type);
 
 	/**
 	Description:

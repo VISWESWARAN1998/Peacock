@@ -7,7 +7,7 @@ Socket::Socket()
 	if ((WSAStartup(MAKEWORD(2, 2), &winsock) != 0))throw winsock_initialize_error();
 }
 
-SOCKET Socket::get_socket(int type)
+SOCKET Socket::get_socket(protocol type)
 {
 	switch (type)
 	{
