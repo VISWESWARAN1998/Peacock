@@ -178,3 +178,5 @@ int main()
 	std::cin >> a;
 }
 ```
+
+[Logo by Freepik](https://www.freepik.com/free-vector/hand-painted-peacock_876009.htm)
